@@ -13,7 +13,7 @@ public interface CreditCardRepository extends JpaRepository<CreditCard, Integer>
     public List<CreditCard> getOnesAllCards(@Param("socialNumber") String socialNumber);
 
     // 카드 번호로 연결 계좌 잔고 조회
-    @Query(value = "select A.balance from Account as A where accountNumber in (select accountNumber from CreditCard where cardNumber = :cardNumber)", nativeQuery = true)
+    @Query(value = "select A.balance from account as A where accountNumber in (select accountNumber from CreditCard where cardNumber = :cardNumber)", nativeQuery = true)
     public double getAccountBalance(@Param("cardNumber") int cardNumber);
 
     // 카드 한도 조회
