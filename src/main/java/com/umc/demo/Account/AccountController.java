@@ -1,5 +1,6 @@
 package com.umc.demo.Account;
 
+import com.umc.demo.CreditCard.CreditCardRepository;
 import com.umc.demo.Transaction.Transaction;
 import com.umc.demo.Transaction.TransactionRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,9 @@ public class AccountController {
     AccountRepository accountRepository;
     @Autowired
     TransactionRepository transactionRepository;
+
+    @Autowired
+    CreditCardRepository creditCardRepository;
 
     // 계좌 개설
     @PostMapping("/signin")
@@ -144,10 +148,10 @@ public class AccountController {
         return "account/cardForm";
     }
 
-    // 계좌에 연결된 카드 조회 (오류)
+    // 계좌에 연결된 카드 조회 (오류) ----> 수정 완료
     @PostMapping("/card")
     public String getCards(@RequestParam("accountNumber") int accountNumber, Model model) {
-        model.addAttribute("cards", accountRepository.getCards(accountNumber));
+        model.addAttribute("cards", creditCardRepository.getCards(accountNumber));
         return "account/card";
     }
 

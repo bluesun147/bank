@@ -19,4 +19,8 @@ public interface CreditCardRepository extends JpaRepository<CreditCard, Integer>
     // 카드 한도 조회
     @Query(value = "select cardLimit from credit_card where cardNumber = :cardNumber", nativeQuery = true)
     public double getLimit(@Param("cardNumber") int cardNumber);
+
+    // 계좌에 연결된 카드 조회
+    @Query(value = "select * from credit_card where accountnumber = :accountNumber", nativeQuery = true)
+    public List<CreditCard> getCards(@Param("accountNumber") int accountNumber);
 }
