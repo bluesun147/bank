@@ -2,22 +2,23 @@ package com.umc.demo.Loan;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-@Getter
+@Getter @Setter
 @NoArgsConstructor
 @Entity
 public class Loan {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int loannumber;
     private String socialnumber;
     private int branchnumber;
     private double amount;
-    private LocalDate loandate; // LocalDateTime 하면 시간까지
+    private LocalDate loandate;
 }

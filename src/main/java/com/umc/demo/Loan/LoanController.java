@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -18,6 +19,19 @@ public class LoanController {
 
     @Autowired
     LoanRepository loanRepository;
+
+    // 대출 등록
+    @PostMapping("/signin")
+    public void createLoan(
+            @RequestParam("socialNumber") String socialNumber,
+            @RequestParam("branchNumber") int branchNumber,
+            @RequestParam("loandate") String loanDate) {
+        Loan loan = new Loan();
+        loan.setSocialnumber(socialNumber);
+        loan.setBranchnumber(branchNumber);
+        loan.setLoandate(LocalDate.parse(loanDate));
+        loanRepository.save(loan);
+    }
 
     //고객(주민번호로)의 대출 정보 조회 폼(완료)
     @GetMapping("/userForm")

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -27,11 +28,25 @@ public class CustomerController {
 
 
 
-    //오류 Date birthdate
-    @PostMapping("/join")
-    public String saveCustomer(String socialNumber, String name, String address, Date birthdate, String email, String phoneNumber, String job) {
-        customerRepository.saveCustomer(socialNumber, name, address, birthdate, email, phoneNumber, job);
-        return "customer/all";
+    // 고객 등록
+    @PostMapping("/signin")
+    public void createCustomer(
+            @RequestParam("socialNumber") String socialNumber,
+            @RequestParam("name") String name,
+            @RequestParam("address") String address,
+            @RequestParam("birthdate") String birthdate,
+            @RequestParam("email") String email,
+            @RequestParam("phoneNumber") String phoneNumber,
+            @RequestParam("job") String job) {
+        Customer c = new Customer();
+        c.setSocialnumber(socialNumber);
+        c.setName(name);
+        c.setAddress(address);
+        c.setBirthdate(LocalDate.parse(birthdate));
+        c.setEmail(email);
+        c.setPhonenumber(phoneNumber);
+        c.setJob(job);
+        customerRepository.save(c);
     }
 
 

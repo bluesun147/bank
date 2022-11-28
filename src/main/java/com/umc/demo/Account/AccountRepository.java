@@ -51,7 +51,7 @@ public interface AccountRepository extends JpaRepository<Account, Integer> {
                          @Param("accountNumber") int accountNumber);
 
     // 계좌에 연결된 카드 조회
-    @Query(value = "select * from CreditCard where accountNumber = :accountNumber", nativeQuery = true)
+    @Query(value = "select * from credit_card where accountnumber = :accountNumber", nativeQuery = true)
     public List<Object> getCards(@Param("accountNumber") int accountNumber);
 
     // 특정 브랜치에서 개설된 계좌 조회
