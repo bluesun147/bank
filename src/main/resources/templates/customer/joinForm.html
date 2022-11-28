@@ -1,0 +1,60 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="/layout/header.html :: fragment-header"></div>
+</head>
+
+<body>
+<div th:replace="/layout/nav.html :: fragment-nav"></div>
+<!--주민번호, 이름, 주소, 생년월일, 이메일, 폰번호, 직업 990118-1013412	신해찬	용인시	1999-12-10	shc0000@gmail.com	01023456778	대학생-->
+<div class="m-2"></div>
+<div class="container justify-content-center">
+    <form action="/customer/join" method="post">
+
+        <div class="form-group">
+            <label for="socialNumber">주민번호</label>
+            <input type="text" name="socialNumber" class="form-control" placeholder="000000-0000000" id="socialNumber">
+        </div>
+
+        <div class="form-group">
+            <label for="name">이름</label>
+            <input type="text" name="name" class="form-control" placeholder="이름" id="name">
+        </div>
+
+        <div class="form-group">
+            <label for="address">주소</label>
+            <input type="text" name="address" class="form-control" placeholder="ㅇㅇ시" id="address">
+        </div>
+
+        <div class="form-group">
+            <label for="birthdate">생년월일</label>
+            <input type="text" name="birthdate" class="form-control" placeholder="0000-00-00" id="birthdate">
+        </div>
+
+        <div class="form-group">
+            <label for="email">이메일</label>
+            <input type="text" name="email" class="form-control" placeholder="ㅇㅇㅇ@ㅇㅇㅇ.ㅇㅇㅇ" id="email">
+        </div>
+
+        <div class="form-group">
+            <label for="phonenumber">전화번호</label>
+            <input type="text" name="phonenumber" class="form-control" placeholder="0000000000" id="phonenumber">
+        </div>
+
+        <div class="form-group">
+            <label for="job">직업</label>
+            <input type="text" name="job" class="form-control" placeholder="ㅇㅇㅇ" id="job">
+        </div>
+
+        <button type="submit">회원가입</button>
+    </form>
+<!--    <button id="btn-save" class="btn btn-secondary" style="float: right" type="submit">회원가입</button>-->
+    <br/>
+</div>
+
+
+<footer th:replace="/layout/footer.html :: fragment-footer"></footer>
+
+</body>
+
+</html>

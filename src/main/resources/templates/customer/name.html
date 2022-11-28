@@ -1,0 +1,43 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="/layout/header.html :: fragment-header"></div>
+</head>
+
+<body>
+<div th:replace="/layout/nav.html :: fragment-nav"></div>
+<!--이름으로 고객 정보 조회-->
+<div class="m-2"></div>
+<div class="container justify-content-center">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>주민번호</th>
+            <th>이름</th>
+            <th>주소</th>
+            <th>생년월일</th>
+            <th>이메일</th>
+            <th>전화번호</th>
+            <th>직업</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="customer : ${customersByName}">
+            <td><span th:text="${customer.socialnumber}"></span></td>
+            <td><span th:text="${customer.name}"></span></td>
+            <td><span th:text="${customer.address}"></span></td>
+            <td><span th:text="${customer.birthdate}"></span></td>
+            <td><span th:text="${customer.email}"></span></td>
+            <td><span th:text="${customer.phonenumber}"></span></td>
+            <td><span th:text="${customer.job}"></span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer th:replace="/layout/footer.html :: fragment-footer"></footer>
+
+</body>
+
+</html>

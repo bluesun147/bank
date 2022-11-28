@@ -1,0 +1,25 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="/layout/header.html :: fragment-header"></div>
+</head>
+
+<body>
+<div th:replace="/layout/nav.html :: fragment-nav"></div>
+<!--계좌 이체 폼-->
+<div class="m-2"></div>
+<div class="container justify-content-center">
+
+    <form action="/account/transfer" method="post">
+        이체금액: <input type="text" name="money" />
+        보낼계좌: <input type="text" name="accountNumber1" />
+        받을계좌: <input type="text" name="accountNumber2" />
+        <button type="submit">계좌이체</button>
+    </form>
+</div>
+
+<footer th:replace="/layout/footer.html :: fragment-footer"></footer>
+
+</body>
+
+</html>

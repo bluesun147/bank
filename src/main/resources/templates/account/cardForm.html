@@ -1,0 +1,23 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="/layout/header.html :: fragment-header"></div>
+</head>
+
+<body>
+<div th:replace="/layout/nav.html :: fragment-nav"></div>
+<!--계좌에 연결된 카드 조회 폼-->
+<div class="m-2"></div>
+<div class="container justify-content-center">
+
+    <form action="/account/card" method="post">
+        계좌번호: <input type="text" name="accountNumber" />
+        <button type="submit">조회</button>
+    </form>
+</div>
+
+<footer th:replace="/layout/footer.html :: fragment-footer"></footer>
+
+</body>
+
+</html>

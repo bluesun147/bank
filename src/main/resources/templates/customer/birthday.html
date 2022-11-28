@@ -1,0 +1,31 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="/layout/header.html :: fragment-header"></div>
+</head>
+
+<body>
+<div th:replace="/layout/nav.html :: fragment-nav"></div>
+<!--전체 고객 생일 조회-->
+<div class="m-2"></div>
+<div class="container justify-content-center">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>생년월일</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="customer : ${customers}">
+            <td><span th:text="${customer.birthdate}"></span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer th:replace="/layout/footer.html :: fragment-footer"></footer>
+
+</body>
+
+</html>

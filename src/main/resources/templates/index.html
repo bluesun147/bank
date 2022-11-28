@@ -1,0 +1,44 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<head>
+    <div th:replace="/layout/header.html :: fragment-header"></div>
+</head>
+
+<body>
+<div th:replace="/layout/nav.html :: fragment-nav"></div>
+
+<div class="container">
+
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <h1 class="display-4 font-weight-bold">Bank</h1>
+        <p class="lead">다양한 은행업무를 수행하세요</p>
+    </div>
+
+    <p><a href="/customer/all">전체고객조회</a></p>
+    <p><a href="/customer/all/birthday">전체 고객 생일 조회</a></p>
+    <p><a href="/branch/all">전체 지점 조회</a></p>
+    <p><a href="/account/all">모든 계좌 조회</a></p>
+    <p><a href="/customer/nameForm">이름으로 고객 정보 조회</a></p>
+    <p><a href="/loan/userForm">고객(주민번호로)의 대출 정보 조회</a></p>
+    <p><a href="/loan/amountForm">특정 대출의 남은 대출금 조회</a></p>
+    <p><a href="/loan/repaymentForm">특정 대출의 대출 상환</a></p>
+    <p><a href="/transaction/accountForm">특정 계좌 거래 내역 조회</a></p>
+    <p><a href="/card/userForm">고객의 모든 카드 조회</a></p>
+    <p><a href="/card/account_balanceForm">카드 번호로 연결 계좌 잔고 조회</a></p>
+    <p><a href="/card/limitForm">카드 한도 조회</a></p>
+    <p><a href="/account/branchForm">특정 지점에서 개설된 계좌 조회</a></p>
+    <p><a href="/account/cardForm">계좌에 연결된 카드 조회</a></p>
+    <p><a href="/account/transferForm">계좌이체</a></p>
+    <p><a href="/account/balanceForm">특정 계좌 잔고 조회</a></p>
+    <p><a href="/account/userForm">특정 사용자 계좌 조회</a></p>
+
+
+
+</div>
+
+<footer th:replace="/layout/footer.html :: fragment-footer"></footer>
+
+</body>
+
+</html>

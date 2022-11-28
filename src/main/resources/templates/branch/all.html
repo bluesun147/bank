@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="/layout/header.html :: fragment-header"></div>
+</head>
+
+<body>
+<div th:replace="/layout/nav.html :: fragment-nav"></div>
+<!--전체 브랜치 조회-->
+<div class="m-2"></div>
+<div class="container justify-content-center">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>지점번호</th>
+            <th>지점명</th>
+            <th>지역</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="branch : ${branchs}">
+            <td><span th:text="${branch.branchnumber}"></span></td>
+            <td><span th:text="${branch.branchname}"></span></td>
+            <td><span th:text="${branch.branchcity}"></span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer th:replace="/layout/footer.html :: fragment-footer"></footer>
+
+</body>
+
+</html>

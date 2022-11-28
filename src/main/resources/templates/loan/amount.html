@@ -1,0 +1,30 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="/layout/header.html :: fragment-header"></div>
+</head>
+
+<body>
+<div th:replace="/layout/nav.html :: fragment-nav"></div>
+<!--특정 대출의 남은 amount 조회-->
+<div class="m-2"></div>
+<div class="container justify-content-center">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>대출금</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            <td><span th:text="${amount}"></span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer th:replace="/layout/footer.html :: fragment-footer"></footer>
+
+</body>
+
+</html>

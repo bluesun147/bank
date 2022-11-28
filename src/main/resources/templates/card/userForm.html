@@ -1,0 +1,23 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="/layout/header.html :: fragment-header"></div>
+</head>
+
+<body>
+<div th:replace="/layout/nav.html :: fragment-nav"></div>
+<!--고객의 모든 카드 조회 (주민번호로) 폼-->
+<div class="m-2"></div>
+<div class="container justify-content-center">
+
+    <form action="/card/user" method="post">
+        주민번호: <input type="text" name="socialNumber" />
+        <button type="submit">조회</button>
+    </form>
+</div>
+
+<footer th:replace="/layout/footer.html :: fragment-footer"></footer>
+
+</body>
+
+</html>

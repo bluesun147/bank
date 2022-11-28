@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="/layout/header.html :: fragment-header"></div>
+</head>
+
+<body>
+<div th:replace="/layout/nav.html :: fragment-nav"></div>
+<!--고객(주민번호로)의 대출 정보 조회-->
+<div class="m-2"></div>
+<div class="container justify-content-center">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>대출번호</th>
+            <th>주민번호</th>
+            <th>지점번호</th>
+            <th>대출금</th>
+            <th>시간</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td><span th:text="${user.loannumber}"></span></td>
+            <td><span th:text="${user.socialnumber}"></span></td>
+            <td><span th:text="${user.branchnumber}"></span></td>
+            <td><span th:text="${user.amount}"></span></td>
+            <td><span th:text="${user.loandate}"></span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer th:replace="/layout/footer.html :: fragment-footer"></footer>
+
+</body>
+
+</html>

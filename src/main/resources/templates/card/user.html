@@ -1,0 +1,41 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="/layout/header.html :: fragment-header"></div>
+</head>
+
+<body>
+<div th:replace="/layout/nav.html :: fragment-nav"></div>
+<!--고객의 모든 카드 조회 (주민번호로)-->
+<div class="m-2"></div>
+<div class="container justify-content-center">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>카드번호</th>
+            <th>주민번호</th>
+            <th>계좌번호</th>
+            <th>유형</th>
+            <th>카드한도</th>
+            <th>개설일자</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="card : ${cards}">
+            <td><span th:text="${card.cardnumber}"></span></td>
+            <td><span th:text="${card.socialnumber}"></span></td>
+            <td><span th:text="${card.accountnumber}"></span></td>
+            <td><span th:text="${card.type}"></span></td>
+            <td><span th:text="${card.cardlimit}"></span></td>
+            <td><span th:text="${card.applicationdate}"></span></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer th:replace="/layout/footer.html :: fragment-footer"></footer>
+
+</body>
+
+</html>

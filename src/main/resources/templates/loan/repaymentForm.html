@@ -1,0 +1,24 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="/layout/header.html :: fragment-header"></div>
+</head>
+
+<body>
+<div th:replace="/layout/nav.html :: fragment-nav"></div>
+<!--특정 대출의 대출 상환 폼-->
+<div class="m-2"></div>
+<div class="container justify-content-center">
+
+    <form action="/loan/repayment" method="post">
+        대출번호: <input type="text" name="loanNumber" />
+        상환액: <input type="text" name="money" />
+        <button type="submit">상환</button>
+    </form>
+</div>
+
+<footer th:replace="/layout/footer.html :: fragment-footer"></footer>
+
+</body>
+
+</html>
