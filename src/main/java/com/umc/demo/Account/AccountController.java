@@ -1,6 +1,6 @@
 package com.umc.demo.Account;
 
-import com.umc.demo.Customer.Customer;
+import com.umc.demo.CreditCard.CreditCardRepository;
 import com.umc.demo.Transaction.Transaction;
 import com.umc.demo.Transaction.TransactionRepository;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @RequiredArgsConstructor
 //@RestController
@@ -23,19 +22,25 @@ public class AccountController {
     @Autowired
     TransactionRepository transactionRepository;
 
+    @Autowired
+    CreditCardRepository creditCardRepository;
 
-
-    // --------> 이건 그냥 jpa 쓰면 안됨??
-    // 계좌 개설 --> 로그인 해야 할 수 있도록
+    // 계좌 개설
     @PostMapping("/signin")
-    public List<Customer> createAccount(
+    public void createAccount(
             @RequestParam("socialNumber") String socialNumber,
             @RequestParam("branchnumber") int branchnumber,
             @RequestParam("type") String type,
             @RequestParam("balance") double balance,
             @RequestParam("cardappstatus") boolean cardappstatus) {
-        // 로그인 상태면 정보 모두 있으므로 파람으로 안받고 자동으로 넣어주면 됨.
-        return accountRepository.createAccount(socialNumber, branchnumber, type, balance, cardappstatus);
+        Account ac = new Account();
+        ac.setSocialnumber(socialNumber);
+        ac.setBranchnumber(branchnumber);
+        ac.setType(type);
+        ac.setBalance(balance);
+        ac.setCardappstatus(cardappstatus);
+        ac.setOpendate(LocalDate.now());
+        accountRepository.save(ac);
     }
 
 
@@ -143,10 +148,10 @@ public class AccountController {
         return "account/cardForm";
     }
 
-    // 계좌에 연결된 카드 조회 (오류)
+    // 계좌에 연결된 카드 조회 (오류) ----> 수정 완료
     @PostMapping("/card")
     public String getCards(@RequestParam("accountNumber") int accountNumber, Model model) {
-        model.addAttribute("cards", accountRepository.getCards(accountNumber));
+        model.addAttribute("cards", creditCardRepository.getCards(accountNumber));
         return "account/card";
     }
 

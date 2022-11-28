@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -17,6 +19,19 @@ public class LoanController {
 
     @Autowired
     LoanRepository loanRepository;
+
+    // 대출 등록
+    @PostMapping("/signin")
+    public void createLoan(
+            @RequestParam("socialNumber") String socialNumber,
+            @RequestParam("branchNumber") int branchNumber,
+            @RequestParam("loandate") String loanDate) {
+        Loan loan = new Loan();
+        loan.setSocialnumber(socialNumber);
+        loan.setBranchnumber(branchNumber);
+        loan.setLoandate(LocalDate.parse(loanDate));
+        loanRepository.save(loan);
+    }
 
     //고객(주민번호로)의 대출 정보 조회 폼(완료)
     @GetMapping("/userForm")
@@ -31,7 +46,6 @@ public class LoanController {
         return "loan/user";
     }
 
-
     //특정 대출의 남은 amount 조회 폼(완료)
     @GetMapping("/amountForm")
     public String amountForm(){
@@ -41,7 +55,7 @@ public class LoanController {
     // 특정 대출의 남은 amount 조회(완료)
     @PostMapping("/amount")
     public String getLoanAmount(@RequestParam("loanNumber") int loanNumber, Model model) {
-        model.addAttribute("amount", loanRepository.getLoanAmount(loanNumber));
+        model.addAttribute("amount", new BigDecimal(loanRepository.getLoanAmount(loanNumber)));
         return "loan/amount";
     }
 
@@ -60,7 +74,7 @@ public class LoanController {
         double result = repaymentamount - money;
 
         loanRepository.repayment(result, loanNumber);
-        model.addAttribute("amount", loanRepository.getLoanAmount(loanNumber));
+        model.addAttribute("amount", new BigDecimal(loanRepository.getLoanAmount(loanNumber)));
         return "loan/amount";
     }
 }

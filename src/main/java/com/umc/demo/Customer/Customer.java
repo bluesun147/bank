@@ -2,6 +2,7 @@ package com.umc.demo.Customer;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
@@ -10,7 +11,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-@Getter
+@Getter @Setter
 @NoArgsConstructor
 @Entity
 public class Customer {
