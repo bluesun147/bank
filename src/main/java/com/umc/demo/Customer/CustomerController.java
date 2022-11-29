@@ -78,10 +78,4 @@ public class CustomerController {
         model.addAttribute("customers", customerRepository.getAllCustomers());
         return "customer/birthday";
     }
-
-    // 테스트 쿼리1
-    @GetMapping("/test")
-    public List<Object> test() { // list 타입 Customer로 안하고 그냥 Object해도 결고 나옴.
-        return customerRepository.test();
-    }
 }
