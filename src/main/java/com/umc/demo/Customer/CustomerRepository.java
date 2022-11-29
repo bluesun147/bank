@@ -24,13 +24,4 @@ public interface CustomerRepository extends JpaRepository<Customer, String>{
     // 전체 고객 생일 조회
     @Query(value = "select birthDate from customer", nativeQuery = true)
     public List<Date> getAllCustomersBirthday(); // 타입 틀리면 (Integer로 했을 시)No converter found capable of converting from type [java.sql.Date] to type [@org.springframework.data.jpa.repository.Query java.lang.Integer]
-
-
-   // 테스트 쿼리1
-   @Query(value = "select name, type, balance, openDate\n" +
-           "from Account as a\n" +
-           "inner join customer as c\n" +
-           "    on a.socialNumber = c.socialNumber\n" +
-           "    where c.name = '선민우';", nativeQuery = true)
-   public List<Object> test();
 }
