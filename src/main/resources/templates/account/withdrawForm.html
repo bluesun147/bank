@@ -6,16 +6,15 @@
 
 <body>
 <div th:replace="/layout/nav.html :: fragment-nav"></div>
-<!--계좌 이체 폼-->
+<!--출금 폼-->
 <div class="m-2"></div>
 <div class="container justify-content-center">
 
-    <form action="/account/transfer" method="post">
-        이체금액: <input type="text" name="money" style="display: block"/>
-        보낼계좌: <input type="text" name="accountNumber" style="display: block"/>
-        받을계좌: <input type="text" name="accountNumber2" style="display: block"/>
+    <form action="/account/withdraw" method="post">
+        출금액: <input type="text" name="withdraw" style="display: block"/>
+        계좌번호: <input type="text" name="accountNumber" style="display: block"/>
         <br/>
-        <button type="submit">계좌이체</button>
+        <button type="submit">출금</button>
     </form>
 </div>
 

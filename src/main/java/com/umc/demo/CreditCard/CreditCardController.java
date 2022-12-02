@@ -18,9 +18,15 @@ public class CreditCardController {
     @Autowired
     CreditCardRepository creditCardRepository;
 
-    // 카드 등록
+    //카드 등록 폼(완료)
+    @GetMapping("/signinForm")
+    public String signinForm(){
+        return "card/signinForm";
+    }
+
+    // 카드 등록(완료)
     @PostMapping("/signin")
-    public void createCard(
+    public String createCard(
             @RequestParam("socialNumber") String socialNumber,
             @RequestParam("accountnumber") int accountnumber,
             @RequestParam("type") String type,
@@ -33,6 +39,7 @@ public class CreditCardController {
         cd.setCardlimit(cardlimit);
         cd.setApplicationdate(LocalDate.parse(applicationdate));
         creditCardRepository.save(cd);
+        return "card/userForm";
     }
 
     //고객의 모든 카드 조회 (주민번호로) 폼(완료)

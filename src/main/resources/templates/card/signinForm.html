@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="/layout/header.html :: fragment-header"></div>
+</head>
+
+<body>
+<div th:replace="/layout/nav.html :: fragment-nav"></div>
+<!--카드 등록 폼-->
+<div class="m-2"></div>
+<div class="container justify-content-center">
+
+    <form action="/card/signin" method="post">
+        주민번호: <input type="text" name="socialNumber" style="display: block"/>
+        계좌번호: <input type="text" name="accountnumber" style="display: block"/>
+        유형: <input type="text" name="type" style="display: block"/>
+        카드한도: <input type="text" name="cardlimit" style="display: block"/>
+        개설일자: <input type="text" name="applicationdate" style="display: block"/>
+        <br/>
+        <button type="submit">개설</button>
+    </form>
+</div>
+
+<footer th:replace="/layout/footer.html :: fragment-footer"></footer>
+
+</body>
+
+</html>

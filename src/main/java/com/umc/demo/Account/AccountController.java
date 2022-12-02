@@ -25,9 +25,15 @@ public class AccountController {
     @Autowired
     CreditCardRepository creditCardRepository;
 
+    //계좌 개설 폼(완료)
+    @GetMapping("/signinForm")
+    public String signinForm(){
+        return "account/signinForm";
+    }
+    
     // 계좌 개설
     @PostMapping("/signin")
-    public void createAccount(
+    public String createAccount(
             @RequestParam("socialNumber") String socialNumber,
             @RequestParam("branchnumber") int branchnumber,
             @RequestParam("type") String type,
@@ -41,6 +47,7 @@ public class AccountController {
         ac.setCardappstatus(cardappstatus);
         ac.setOpendate(LocalDate.now());
         accountRepository.save(ac);
+        return "account/userForm";
     }
 
 
@@ -81,13 +88,17 @@ public class AccountController {
 
     // 입출금시 거래내역 테이블에도 데이터 들어가야 함.
 
-
+    //입금 폼(완료)
+    @GetMapping("/depositForm")
+    public String depositForm(){
+        return "account/depositForm";
+    }
 
     // 입금
-    @GetMapping("/deposit")
-    public double deposit(
+    @PostMapping("/deposit")
+    public String deposit(
             @RequestParam("deposit") double deposit,
-            @RequestParam("accountNumber") int accountNumber) {
+            @RequestParam("accountNumber") int accountNumber, Model model) {
 
         double accountBalance = accountRepository.getAccountBalance(accountNumber); // 원금
         double result = accountBalance + deposit; // 원금 + 입금액
@@ -101,14 +112,21 @@ public class AccountController {
         tr.setTransactionamount(deposit);
         transactionRepository.save(tr);
 
-        return accountRepository.getAccountBalance(accountNumber); // 입금 후 잔액 반환
+        model.addAttribute("balance", accountRepository.getAccountBalance(accountNumber));
+        return "account/balance";
     }
 
-    // 출금
-    @GetMapping("/withdraw")
-    public double withdraw(
+    //출금 폼(완료)
+    @GetMapping("/withdrawForm")
+    public String withdrawForm(){
+        return "account/withdrawForm";
+    }
+
+    //출금(완료)
+    @PostMapping("/withdraw")
+    public String withdraw(
             @RequestParam("withdraw") double withdraw,
-            @RequestParam("accountNumber") int accountNumber) {
+            @RequestParam("accountNumber") int accountNumber, Model model) {
 
         double accountBalance = accountRepository.getAccountBalance(accountNumber); // 원금
         double result = accountBalance - withdraw; // 원금 - 출금액
@@ -121,7 +139,8 @@ public class AccountController {
         tr.setTransactionamount((-1)*withdraw);
         transactionRepository.save(tr);
 
-        return accountRepository.getAccountBalance(accountNumber); // 출금 후 잔액 반환
+        model.addAttribute("balance", accountRepository.getAccountBalance(accountNumber));
+        return "account/balance";
     }
 
 
@@ -135,10 +154,10 @@ public class AccountController {
     @PostMapping("/transfer")
     public String transfer(
             @RequestParam("money") double money,
-            @RequestParam("accountNumber1") int accountNumber1,
-            @RequestParam("accountNumber2") int accountNumber2) {
-         this.withdraw(money, accountNumber1); // 계좌1에서 출금
-         this.deposit(money, accountNumber2); // 계좌2에 입금
+            @RequestParam("accountNumber") int accountNumber,
+            @RequestParam("accountNumber2") int accountNumber2, Model model) {
+         this.withdraw(money, accountNumber, model); // 계좌1에서 출금
+         this.deposit(money, accountNumber2, model); // 계좌2에 입금
         return "account/balanceForm";
     }
 

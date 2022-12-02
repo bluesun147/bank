@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="/layout/header.html :: fragment-header"></div>
+</head>
+
+<body>
+<div th:replace="/layout/nav.html :: fragment-nav"></div>
+<!--대출 등록 폼-->
+<div class="m-2"></div>
+<div class="container justify-content-center">
+
+    <form action="/loan/signin" method="post">
+        주민번호: <input type="text" name="socialNumber" style="display: block"/>
+        지점번호: <input type="text" name="branchNumber" style="display: block"/>
+        대출금: <input type="text" name="amount" style="display: block"/>
+        시간: <input type="text" name="loandate" style="display: block"/>
+        <br/>
+        <button type="submit">대출</button>
+    </form>
+</div>
+
+<footer th:replace="/layout/footer.html :: fragment-footer"></footer>
+
+</body>
+
+</html>

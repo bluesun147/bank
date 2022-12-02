@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="/layout/header.html :: fragment-header"></div>
+</head>
+
+<body>
+<div th:replace="/layout/nav.html :: fragment-nav"></div>
+<!--계좌 개설 폼-->
+<div class="m-2"></div>
+<div class="container justify-content-center">
+
+    <form action="/account/signin" method="post">
+        주민번호: <input type="text" name="socialNumber" style="display: block"/>
+        지점번호: <input type="text" name="branchnumber" style="display: block"/>
+        유형: <input type="text" name="type" style="display: block"/>
+        최초입금액: <input type="text" name="balance" style="display: block"/>
+        카드유무: <input type="text" name="cardappstatus" style="display: block"/>
+        <br>
+        <button type="submit">계좌 개설</button>
+    </form>
+</div>
+
+<footer th:replace="/layout/footer.html :: fragment-footer"></footer>
+
+</body>
+
+</html>

@@ -28,9 +28,9 @@ public class CustomerController {
 
 
 
-    // 고객 등록
-    @PostMapping("/signin")
-    public void createCustomer(
+    //회원가입 (완료)
+    @PostMapping("/join")
+    public String createCustomer(
             @RequestParam("socialNumber") String socialNumber,
             @RequestParam("name") String name,
             @RequestParam("address") String address,
@@ -47,6 +47,7 @@ public class CustomerController {
         c.setPhonenumber(phoneNumber);
         c.setJob(job);
         customerRepository.save(c);
+        return "redirect:/customer/all";
     }
 
 

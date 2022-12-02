@@ -20,17 +20,27 @@ public class LoanController {
     @Autowired
     LoanRepository loanRepository;
 
-    // 대출 등록
+
+    //대출 등록 폼(완료)
+    @GetMapping("/signinForm")
+    public String signinForm(){
+        return "loan/signinForm";
+    }
+
+    // 대출 등록(완료)
     @PostMapping("/signin")
-    public void createLoan(
+    public String createLoan(
             @RequestParam("socialNumber") String socialNumber,
             @RequestParam("branchNumber") int branchNumber,
+            @RequestParam("amount") double amount,
             @RequestParam("loandate") String loanDate) {
         Loan loan = new Loan();
         loan.setSocialnumber(socialNumber);
         loan.setBranchnumber(branchNumber);
+        loan.setAmount(amount);
         loan.setLoandate(LocalDate.parse(loanDate));
         loanRepository.save(loan);
+        return "redirect:/loan/userForm";
     }
 
     //고객(주민번호로)의 대출 정보 조회 폼(완료)

@@ -11,29 +11,84 @@
 <div class="container">
 
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="display-4 font-weight-bold">Bank</h1>
+        <h1 class="display-4 font-weight-bold">MJU Bank</h1>
         <p class="lead">다양한 은행업무를 수행하세요</p>
     </div>
 
-    <p><a href="/customer/all">전체고객조회</a></p>
-    <p><a href="/customer/all/birthday">전체 고객 생일 조회</a></p>
-    <p><a href="/branch/all">전체 지점 조회</a></p>
-    <p><a href="/account/all">모든 계좌 조회</a></p>
-    <p><a href="/customer/nameForm">이름으로 고객 정보 조회</a></p>
-    <p><a href="/loan/userForm">고객(주민번호로)의 대출 정보 조회</a></p>
-    <p><a href="/loan/amountForm">특정 대출의 남은 대출금 조회</a></p>
-    <p><a href="/loan/repaymentForm">특정 대출의 대출 상환</a></p>
-    <p><a href="/transaction/accountForm">특정 계좌 거래 내역 조회</a></p>
-    <p><a href="/card/userForm">고객의 모든 카드 조회</a></p>
-    <p><a href="/card/account_balanceForm">카드 번호로 연결 계좌 잔고 조회</a></p>
-    <p><a href="/card/limitForm">카드 한도 조회</a></p>
-    <p><a href="/account/branchForm">특정 지점에서 개설된 계좌 조회</a></p>
-    <p><a href="/account/cardForm">계좌에 연결된 카드 조회</a></p>
-    <p><a href="/account/transferForm">계좌이체</a></p>
-    <p><a href="/account/balanceForm">특정 계좌 잔고 조회</a></p>
-    <p><a href="/account/userForm">특정 사용자 계좌 조회</a></p>
+    <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">계좌 조회</h4>
+            </div>
+            <div class="card-body">
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='account/all'" style="font-size: 1.1rem">모든 계좌 조회</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='account/branchForm'" style="font-size: 1.1rem">특정 지점에서 개설된 계좌 조회</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='account/balanceForm'" style="font-size: 1.1rem">계좌 잔고 조회</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='account/userForm'" style="font-size: 1.1rem">고객 계좌 조회</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='card/account_balanceForm'" style="font-size: 1.1rem">카드 번호로 계좌 잔고 조회</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='transaction/accountForm'" style="font-size: 1.1rem">계좌 거래 내역 조회</button>
+            </div>
+        </div>
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">고객 조회</h4>
+            </div>
+            <div class="card-body">
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='customer/all'" style="font-size: 1.1rem">전체고객조회</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='customer/all/birthday'" style="font-size: 1.1rem">전체 고객 생일 조회</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='customer/nameForm'" style="font-size: 1.1rem">이름으로 고객 정보 조회</button>
+            </div>
+        </div>
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">카드 조회</h4>
+            </div>
+            <div class="card-body">
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='card/userForm'" style="font-size: 1.1rem">고객의 모든 카드 조회</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='card/limitForm'" style="font-size: 1.1rem">카드 한도 조회</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='account/cardForm'" style="font-size: 1.1rem">계좌에 연결된 카드 조회</button>
+            </div>
+        </div>
+    </div>
 
-
+    <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">뱅킹</h4>
+            </div>
+            <div class="card-body">
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='account/signinForm'" style="font-size: 1.1rem">계좌 개설</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='card/signinForm'" style="font-size: 1.1rem">카드 등록</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='account/transferForm'" style="font-size: 1.1rem">계좌 이체</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='account/depositForm'" style="font-size: 1.1rem">입금</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='account/withdrawForm'" style="font-size: 1.1rem">출금</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='loan/signinForm'" style="font-size: 1.1rem">대출</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='loan/repaymentForm'" style="font-size: 1.1rem">대출 상환</button>
+            </div>
+        </div>
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">대출 조회</h4>
+            </div>
+            <div class="card-body">
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='loan/userForm'" style="font-size: 1.1rem">고객의 대출 정보 조회</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='loan/amountForm'" style="font-size: 1.1rem">남은 대출금 조회</button>
+            </div>
+        </div>
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">기타</h4>
+            </div>
+            <div class="card-body">
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='customer/joinForm'" style="font-size: 1.1rem">회원가입</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='branch/all'" style="font-size: 1.1rem">전체 지점 조회</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='test/1'" style="font-size: 1.1rem">테스트 쿼리1</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='test/2'" style="font-size: 1.1rem">테스트 쿼리2</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='test/3'" style="font-size: 1.1rem">테스트 쿼리3</button>
+                <button type="button" class="btn btn-lg btn-block btn-primary" onclick="location.href='test/4'" style="font-size: 1.1rem">테스트 쿼리4</button>
+            </div>
+        </div>
+    </div>
 
 </div>
 

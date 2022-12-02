@@ -2,6 +2,8 @@ package com.umc.demo.TestQuery;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,7 +12,8 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RequestMapping("/test")
-@RestController
+//@RestController
+@Controller
 public class TestQueryController {
     @Autowired
     TestQueryRepository testQueryRepository;
@@ -18,8 +21,9 @@ public class TestQueryController {
     // 테스트 쿼리1
     //1. 이름이 선민우인 고객의 모든 계좌와 현재 잔액, 계좌 개설일을 표시하라.
     @GetMapping("/1")
-    public List<Object> test1() {
-        return testQueryRepository.test1();
+    public String test1(Model model) {
+        model.addAttribute("accounts", testQueryRepository.test1());
+        return "test/1";
     }
 
     // 테스트 쿼리2
