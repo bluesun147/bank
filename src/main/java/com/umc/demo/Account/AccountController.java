@@ -38,14 +38,16 @@ public class AccountController {
             @RequestParam("branchnumber") int branchnumber,
             @RequestParam("type") String type,
             @RequestParam("balance") double balance,
-            @RequestParam("cardappstatus") boolean cardappstatus) {
+            @RequestParam("cardappstatus") boolean cardappstatus,
+            @RequestParam("opendate") String opendate) {
         Account ac = new Account();
         ac.setSocialnumber(socialNumber);
         ac.setBranchnumber(branchnumber);
         ac.setType(type);
         ac.setBalance(balance);
         ac.setCardappstatus(cardappstatus);
-        ac.setOpendate(LocalDate.now());
+        //ac.setOpendate(LocalDate.now());
+        ac.setOpendate(LocalDate.parse(opendate));
         accountRepository.save(ac);
         return "account/userForm";
     }

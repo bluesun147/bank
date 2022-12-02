@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 
 @Getter @Setter
 @NoArgsConstructor
-@EntityListeners(AuditingEntityListener.class)
 @Entity
 public class Account {
     @Id
@@ -23,17 +22,6 @@ public class Account {
     private int branchnumber;
     private String type;
     private double balance;
-    @CreatedDate
     private boolean cardappstatus;
     private LocalDate opendate;
-
-//    @Builder
-//    public Customer(int user_id, String email, String password, String name, String profile_img, String text) {
-//        this.user_id = user_id;
-//        this.email = email;
-//        this.password = password;
-//        this.name = name;
-//        this.profile_img = profile_img;
-//        this.text = text;
-//    }
 }
